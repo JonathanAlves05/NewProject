@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerson Barbearia - Premium Urbano</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/logoMadeInFavela.png" type="image/png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Definindo as fontes base */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212; /* Fundo principal escuro */
+            color: #E0E0E0; /* Cor de texto principal (branco-osso) */
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Cores personalizadas do projeto */
+        .text-gold {
+            color: #D4AF37; /* Dourado */
+        }
+        .bg-gold {
+            background-color: #D4AF37;
+        }
+        .border-gold {
+            border-color: #D4AF37;
+        }
+        
+        /* Efeito de sobreposição escuro para imagens de fundo */
+        .bg-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        /* Animação de fade-in ao rolar */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilo para o mapa do Google com tema escuro */
+        .map-dark {
+            filter: grayscale(1) invert(0.9) contrast(0.8);
+        }
+    </style>
+</head>
+<body class="bg-[#121212]">
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="fixed bottom-6 right-6 z-50 bg-gold text-black w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp text-4xl"></i>
+    </a>
+
+    <!-- NAVEGAÇÃO -->
+    <header class="bg-black/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-40 h-20">
+        <div class="container mx-auto px-6 h-full flex justify-between items-center relative">
+            <div class="w-24">
+                <!-- Versão menor do logo para o menu -->
+                <img src="img/logoMadeInFavela.png" alt="Logo Emerson Barbearia" class="h-17 w-auto">
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm tracking-wider uppercase absolute left-1/2 -translate-x-1/2">
+                <a href="#manifesto" class="hover:text-gold transition-colors">Sobre</a>
+                <a href="#servicos" class="hover:text-gold transition-colors">Serviços</a>
+                <a href="#ambiente" class="hover:text-gold transition-colors">Local</a>
+                <a href="#contato" class="hover:text-gold transition-colors">Contato</a>
+            </nav>
+            <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="hidden md:block bg-gold text-black py-2 px-6 uppercase text-sm font-bold hover:bg-yellow-500 transition-colors">
+                Agendar
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. TOPO (HERO SECTION) -->
+        <section id="home" class="h-screen flex items-center justify-center relative bg-fixed bg-cover bg-center" style="background-image: url(img/imgBg.jpeg)">
+            <div class="bg-overlay"></div>
+            <div class="text-center z-10 p-6">
+                <!-- Insira o seu logo aqui -->
+                <img src="img/logoMadeInFavela.png" alt="Logo Emerson Barbearia" class="w-64 md:w-96 mx-auto mb-4">
+                <h2 class="text-2xl md:text-4xl text-gold tracking-widest uppercase mt-4">A barbearia da sua quebrada</h2>
+                <div class="mt-12 space-x-4">
+                    <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="bg-gold text-black py-3 px-8 uppercase text-md font-bold hover:bg-yellow-500 transition-colors">Agendar pelo WhatsApp</a>
+                    <a href="#servicos" class="border-2 border-gold text-gold py-3 px-8 uppercase text-md font-bold hover:bg-gold hover:text-black transition-colors">Conheça os Serviços</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. MANIFESTO (NOSSA IDENTIDADE) -->
+        <section id="manifesto" class="py-20 md:py-32 bg-black">
+            <div class="container mx-auto px-6 text-center max-w-4xl fade-in">
+                <h2 class="text-4xl md:text-6xl text-gold mb-6">Made in Favela</h2>
+                <p class="text-lg md:text-xl text-stone-300 leading-relaxed">
+                    [Aqui entra o texto manifesto. Ex: Nascemos do asfalto, com a navalha na mão e o orgulho no peito. A Emerson Barbearia não é só sobre um corte, é sobre a realeza da quebrada. Transformamos a autenticidade da rua em uma experiência de luxo. Cada detalhe, cada corte, é a prova de que a excelência vem de onde a gente menos espera. Isso é Premium Urbano.]
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. SERVIÇOS (O RITUAL) -->
+        <section id="servicos" class="py-20 md:py-24" style="background-image: url('https://www.transparenttextures.com/patterns/leather.png'); background-color: #1a1a1a;">
+            <div class="container mx-auto px-6 fade-in">
+                <h2 class="text-4xl md:text-5xl text-center text-gold mb-16">Serviços</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                    <!-- Serviço 1 -->
+                    <div class="border border-gold/30 p-8 text-center bg-black/50 hover:border-gold transition-all duration-300 flex flex-col">
+                        <div class="flex-grow">
+                            <h3 class="text-2xl text-gold mb-2">Corte Completo</h3>
+                            <p class="text-stone-400 mb-4">[Tesoura ou máquina, com consultoria de estilo para valorizar seu perfil. Inclui lavagem e finalização.]</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-gold mb-6">R$ 80</p>
+                            <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20CORTE%20PREMIUM." target="_blank" class="border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block">Agendar</a>
+                        </div>
+                    </div>
+                    <!-- Serviço 2 -->
+                    <div class="border border-gold/30 p-8 text-center bg-black/50 hover:border-gold transition-all duration-300 flex flex-col">
+                        <div class="flex-grow">
+                            <h3 class="text-2xl text-gold mb-2">Barba Clássica</h3>
+                            <p class="text-stone-400 mb-4">[O ritual completo com toalha quente, espuma de barbear premium, navalha e finalização com óleo de barba.]</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-gold mb-6">R$ 60</p>
+                            <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20uma%20BARBA%20CLÁSSICA." target="_blank" class="border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block">Agendar</a>
+                        </div>
+                    </div>
+                    <!-- Serviço 3 -->
+                    <div class="border border-gold/30 p-8 text-center bg-black/50 hover:border-gold transition-all duration-300 flex flex-col">
+                        <div class="flex-grow">
+                            <h3 class="text-2xl text-gold mb-2">Pezinho</h3>
+                            <p class="text-stone-400 mb-4">[A experiência completa: Corte Premium e o ritual da Barba Clássica para um visual impecável.]</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-gold mb-6">R$ 130</p>
+                            <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20o%20COMBO%20URBANO." target="_blank" class="border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block">Agendar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        
+        <!-- 5. A EQUIPE (OS ARTISTAS) -->
+        <section id="equipe" class="py-20 md:py-24 bg-[#121212]">
+            <div class="container mx-auto px-6 text-center fade-in">
+                <h2 class="text-4xl md:text-5xl text-gold mb-16">O Artista</h2>
+                <div class="flex justify-center items-center">
+                    <!-- Membro 1 -->
+                    <div class="text-center">
+                        <img src="img/perfil.png" alt="Barbeiro Emerson" class="w-48 h-58 mx-auto rounded-full object-cover border-4 border-gold/50 mb-4">
+                        <h3 class="text-2xl">Emerson</h3>
+                        <p class="text-gold">Fundador & Especialista em Fades</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. GALERIA / INSTAGRAM -->
+        <section id="galeria" class="py-20 md:py-24 bg-black text-center">
+            <div class="container mx-auto px-6 fade-in">
+                <h2 class="text-4xl md:text-5xl text-gold mb-6">Nossa Arte</h2>
+                <p class="mb-10">Confira os últimos trabalhos em nosso Instagram.</p>
+                <!-- O ideal é usar um widget do Instagram aqui. Por enquanto, usamos placeholders. -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-10">
+                    <img src="img/cortes/corte1.png" class="h-full w-full object-cover">
+                    <img src="img/cortes/corte2.png" class="h-full w-full object-cover">
+                    <img src="img/cortes/corte3.png" class="h-full w-full object-cover">
+                    <img src="img/cortes/corte4.png" class="h-full w-full object-cover">
+                </div>
+                <a href="https://instagram.com/[SEUUSUARIO]" target="_blank" class="bg-gold text-black py-3 px-8 uppercase text-md font-bold hover:bg-yellow-500 transition-colors">
+                    <i class="fab fa-instagram mr-2"></i> Seguir no Instagram
+                </a>
+            </div>
+        </section>
+
+        <!-- 7. LOCALIZAÇÃO E CONTATO -->
+        <section id="contato" class="py-20 md:py-24 bg-[#121212]">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center fade-in">
+                <div>
+                    <h2 class="text-4xl md:text-5xl text-gold mb-8">Chega Junto</h2>
+                    <div class="space-y-4 text-lg">
+                        <p><i class="fas fa-map-marker-alt text-gold w-6"></i> [Seu Endereço Completo, Rua, Número, Bairro]</p>
+                        <p><i class="fas fa-clock text-gold w-6"></i> [Terça a Sábado, das 9h às 20h]</p>
+                        <p><i class="fas fa-phone text-gold w-6"></i> [Seu Telefone/WhatsApp]</p>
+                    </div>
+                </div>
+                <div class="h-96 w-full">
+                    <!-- Cole o código de incorporação do Google Maps aqui -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.175782017833!2d-46.65657158502213!3d-23.56193768468243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0x4a3ec424298e8a1e!2sAvenida%20Paulista!5e0!3m2!1spt-BR!2sbr!4v1678886564758!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map-dark"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-6">
+        <div class="container mx-auto px-6 text-center text-stone-400 text-sm">
+            <p>&copy; 2024 Emerson Barbearia. Todos os direitos reservados.</p>
+            <p>Desenvolvido com a vibe Premium Urbano.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Script para animação de fade-in ao rolar
+        const faders = document.querySelectorAll('.fade-in');
+
+        const appearOptions = {
+            threshold: 0.2, // O elemento aparece quando 20% dele está visível
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
+
+
+

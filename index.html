@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emerson Barbearia - Premium Urbano</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="img/logoMadeInFavela.png" type="image/png">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -69,50 +66,80 @@
         .map-dark {
             filter: grayscale(1) invert(0.9) contrast(0.8);
         }
+        
+        /* CORREÇÃO: Ajuste para o widget do Calendly DENTRO DO MODAL */
+        #calendly-modal-widget-container { 
+            height: 70vh; /* Altura relativa à tela, mais flexível */
+            /* max-height removido para permitir mais espaço se a tela for grande */
+            overflow: hidden; /* Garante que o container não cause rolagem */
+            border-radius: 8px;
+             border: 1px solid rgba(212, 175, 55, 0.3);
+             position: relative; 
+             width: 100%; 
+        }
+         /* Garante que o iframe do calendly preencha o container */
+        #calendly-modal-widget-container iframe {
+             width: 100%;
+             height: 100%;
+             position: absolute; 
+             top: 0;
+             left: 0;
+             border: none; /* Remove borda do iframe */
+        }
     </style>
 </head>
 <body class="bg-[#121212]">
 
-    <!-- Botão Flutuante do WhatsApp -->
+<div class="overflow-x-hidden">
+
     <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="fixed bottom-6 right-6 z-50 bg-gold text-black w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
         <i class="fab fa-whatsapp text-4xl"></i>
     </a>
 
-    <!-- NAVEGAÇÃO -->
     <header class="bg-black/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-40 h-20">
         <div class="container mx-auto px-6 h-full flex justify-between items-center relative">
-            <div class="w-24">
-                <!-- Versão menor do logo para o menu -->
-                <img src="img/logoMadeInFavela.png" alt="Logo Emerson Barbearia" class="h-17 w-auto">
-            </div>
+            <div class="w-28"> <a href="#home"><img src="img/logoMadeInFavela.png" alt="Logo Emerson Barbearia" class="h-16 w-auto"></a> </div>
             <nav class="hidden md:flex space-x-8 text-sm tracking-wider uppercase absolute left-1/2 -translate-x-1/2">
-                <a href="#manifesto" class="hover:text-gold transition-colors">Sobre</a>
+                <a href="#manifesto" class="hover:text-gold transition-colors">Manifesto</a>
                 <a href="#servicos" class="hover:text-gold transition-colors">Serviços</a>
-                <a href="#ambiente" class="hover:text-gold transition-colors">Local</a>
+                <a href="#ambiente" class="hover:text-gold transition-colors">Ambiente</a>
                 <a href="#contato" class="hover:text-gold transition-colors">Contato</a>
             </nav>
-            <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="hidden md:block bg-gold text-black py-2 px-6 uppercase text-sm font-bold hover:bg-yellow-500 transition-colors">
+            <button id="agendar-desktop-btn" class="hidden md:block bg-gold text-black py-2 px-6 uppercase text-sm font-bold hover:bg-yellow-500 transition-colors">
                 Agendar
-            </a>
+            </button>
+            
+            <button id="menu-btn" class="md:hidden text-gold text-3xl z-50">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-30 pt-20">
+        <nav class="flex flex-col items-center justify-center h-full -mt-10">
+            <a href="#manifesto" class="mobile-link text-3xl uppercase py-5 text-white hover:text-gold transition-colors">Manifesto</a>
+            <a href="#servicos" class="mobile-link text-3xl uppercase py-5 text-white hover:text-gold transition-colors">Serviços</a>
+            <a href="#ambiente" class="mobile-link text-3xl uppercase py-5 text-white hover:text-gold transition-colors">Ambiente</a>
+            <a href="#contato" class="mobile-link text-3xl uppercase py-5 text-white hover:text-gold transition-colors">Contato</a>
+            <button id="agendar-mobile-btn" class="mobile-link mt-8 bg-gold text-black py-3 px-8 uppercase text-md font-bold hover:bg-yellow-500 transition-colors">Agendar Agora</button>
+        </nav>
+    </div>
+
+    
 
     <main>
-        <!-- 1. TOPO (HERO SECTION) -->
         <section id="home" class="h-screen flex items-center justify-center relative bg-fixed bg-cover bg-center" style="background-image: url(img/imgBg.jpeg)">
             <div class="bg-overlay"></div>
             <div class="text-center z-10 p-6">
-                <!-- Insira o seu logo aqui -->
                 <img src="img/logoMadeInFavela.png" alt="Logo Emerson Barbearia" class="w-64 md:w-96 mx-auto mb-4">
                 <h2 class="text-2xl md:text-4xl text-gold tracking-widest uppercase mt-4">A barbearia da sua quebrada</h2>
-                <div class="mt-12 space-x-4">
-                    <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="bg-gold text-black py-3 px-8 uppercase text-md font-bold hover:bg-yellow-500 transition-colors">Agendar pelo WhatsApp</a>
-                    <a href="#servicos" class="border-2 border-gold text-gold py-3 px-8 uppercase text-md font-bold hover:bg-gold hover:text-black transition-colors">Conheça os Serviços</a>
+
+                <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-4 sm:px-0">
+                    <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20horário." target="_blank" class="bg-gold text-black py-3 px-8 uppercase text-md font-bold hover:bg-yellow-500 transition-colors w-full sm:w-auto text-center">Agendar pelo WhatsApp</a>
+                    <a href="#servicos" class="border-2 border-gold text-gold py-3 px-8 uppercase text-md font-bold hover:bg-gold hover:text-black transition-colors w-full sm:w-auto text-center">Conheça os Serviços</a>
                 </div>
             </div>
         </section>
 
-        <!-- 2. MANIFESTO (NOSSA IDENTIDADE) -->
         <section id="manifesto" class="py-20 md:py-32 bg-black">
             <div class="container mx-auto px-6 text-center max-w-4xl fade-in">
                 <h2 class="text-4xl md:text-6xl text-gold mb-6">Made in Favela</h2>
@@ -122,12 +149,10 @@
             </div>
         </section>
 
-        <!-- 3. SERVIÇOS (O RITUAL) -->
         <section id="servicos" class="py-20 md:py-24" style="background-image: url('https://www.transparenttextures.com/patterns/leather.png'); background-color: #1a1a1a;">
             <div class="container mx-auto px-6 fade-in">
                 <h2 class="text-4xl md:text-5xl text-center text-gold mb-16">Serviços</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-                    <!-- Serviço 1 -->
                     <div class="border border-gold/30 p-8 text-center bg-black/50 hover:border-gold transition-all duration-300 flex flex-col">
                         <div class="flex-grow">
                             <h3 class="text-2xl text-gold mb-2">Corte Completo</h3>
@@ -135,10 +160,9 @@
                         </div>
                         <div>
                             <p class="text-3xl font-bold text-gold mb-6">R$ 80</p>
-                            <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20um%20CORTE%20PREMIUM." target="_blank" class="border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block">Agendar</a>
+                            <button class="open-modal-servico border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block" data-servico="Corte Completo">Agendar</button>
                         </div>
                     </div>
-                    <!-- Serviço 2 -->
                     <div class="border border-gold/30 p-8 text-center bg-black/50 hover:border-gold transition-all duration-300 flex flex-col">
                         <div class="flex-grow">
                             <h3 class="text-2xl text-gold mb-2">Barba Clássica</h3>
@@ -146,52 +170,46 @@
                         </div>
                         <div>
                             <p class="text-3xl font-bold text-gold mb-6">R$ 60</p>
-                            <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20uma%20BARBA%20CLÁSSICA." target="_blank" class="border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block">Agendar</a>
+                            <button class="open-modal-servico border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block" data-servico="Barba Clássica">Agendar</button>
                         </div>
                     </div>
-                    <!-- Serviço 3 -->
                     <div class="border border-gold/30 p-8 text-center bg-black/50 hover:border-gold transition-all duration-300 flex flex-col">
                         <div class="flex-grow">
-                            <h3 class="text-2xl text-gold mb-2">Pezinho</h3>
-                            <p class="text-stone-400 mb-4">[A experiência completa: Corte Premium e o ritual da Barba Clássica para um visual impecável.]</p>
+                            <h3 class="text-2xl text-gold mb-2">Combo Urbano</h3>
+                            <p class="text-stone-400 mb-4">[A experiência completa: Corte Completo e o ritual da Barba Clássica para um visual impecável.]</p>
                         </div>
                         <div>
                             <p class="text-3xl font-bold text-gold mb-6">R$ 130</p>
-                            <a href="https://wa.me/[SEUNUMERODOWHATSAPP]?text=Olá!%20Gostaria%20de%20agendar%20o%20COMBO%20URBANO." target="_blank" class="border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block">Agendar</a>
+                            <button class="open-modal-servico border border-gold text-gold py-2 px-6 uppercase text-sm font-bold hover:bg-gold hover:text-black transition-colors w-full block" data-servico="Combo Urbano">Agendar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-       
         
-        <!-- 5. A EQUIPE (OS ARTISTAS) -->
-        <section id="equipe" class="py-20 md:py-24 bg-[#121212]">
-            <div class="container mx-auto px-6 text-center fade-in">
-                <h2 class="text-4xl md:text-5xl text-gold mb-16">O Artista</h2>
-                <div class="flex justify-center items-center">
-                    <!-- Membro 1 -->
-                    <div class="text-center">
-                        <img src="img/perfil.png" alt="Barbeiro Emerson" class="w-48 h-58 mx-auto rounded-full object-cover border-4 border-gold/50 mb-4">
-                        <h3 class="text-2xl">Emerson</h3>
-                        <p class="text-gold">Fundador & Especialista em Fades</p>
-                    </div>
-                </div>
+        <section id="agendamento-section" class="py-20 md:py-24 bg-black text-center">
+            <div class="container mx-auto px-6 fade-in">
+                <h2 class="text-4xl md:text-5xl text-gold mb-6">Agendamento Online</h2>
+                <p class="mb-10 max-w-2xl mx-auto">Prefere agendar diretamente pelo site? Clique abaixo, escolha o dia e horário na agenda e confirme na hora.</p>
+                <button id="open-modal-btn" class="bg-gold text-black py-3 px-10 uppercase text-lg font-bold hover:bg-yellow-500 transition-colors">
+                    Fazer Agendamento
+                </button>
             </div>
         </section>
 
-        <!-- 6. GALERIA / INSTAGRAM -->
-        <section id="galeria" class="py-20 md:py-24 bg-black text-center">
+        
+
+
+        <section id="ambiente" class="py-20 md:py-24 bg-[#121212] text-center"> 
             <div class="container mx-auto px-6 fade-in">
-                <h2 class="text-4xl md:text-5xl text-gold mb-6">Nossa Arte</h2>
-                <p class="mb-10">Confira os últimos trabalhos em nosso Instagram.</p>
-                <!-- O ideal é usar um widget do Instagram aqui. Por enquanto, usamos placeholders. -->
+                <h2 class="text-4xl md:text-5xl text-gold mb-6">Nossa Arte, Nosso Ambiente</h2>
+                <p class="mb-10">Confira os últimos trabalhos e a vibe do nosso espaço no Instagram.</p>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-10">
-                    <img src="img/cortes/corte1.png" class="h-full w-full object-cover">
-                    <img src="img/cortes/corte2.png" class="h-full w-full object-cover">
-                    <img src="img/cortes/corte3.png" class="h-full w-full object-cover">
-                    <img src="img/cortes/corte4.png" class="h-full w-full object-cover">
+                    <img src="img/cortes/corte1.png" class="h-full w-full object-cover" alt="Exemplo de corte de cabelo 1">
+                    <img src="img/cortes/corte2.png" class="h-full w-full object-cover" alt="Exemplo de corte de cabelo 2">
+                    <img src="img/cortes/corte3.png" class="h-full w-full object-cover" alt="Exemplo de corte de cabelo 3">
+                    <img src="img/cortes/corte4.png" class="h-full w-full object-cover" alt="Exemplo de corte de cabelo 4">
                 </div>
                 <a href="https://instagram.com/[SEUUSUARIO]" target="_blank" class="bg-gold text-black py-3 px-8 uppercase text-md font-bold hover:bg-yellow-500 transition-colors">
                     <i class="fab fa-instagram mr-2"></i> Seguir no Instagram
@@ -199,58 +217,127 @@
             </div>
         </section>
 
-        <!-- 7. LOCALIZAÇÃO E CONTATO -->
-        <section id="contato" class="py-20 md:py-24 bg-[#121212]">
+        <section id="contato" class="py-20 md:py-24 bg-black"> 
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center fade-in">
                 <div>
-                    <h2 class="text-4xl md:text-5xl text-gold mb-8">Chega Junto</h2>
+                    <h2 class="text-4xl md:text-5xl text-gold mb-8">ENDEREÇO E CONTATOS</h2>
                     <div class="space-y-4 text-lg">
-                        <p><i class="fas fa-map-marker-alt text-gold w-6"></i> [Seu Endereço Completo, Rua, Número, Bairro]</p>
-                        <p><i class="fas fa-clock text-gold w-6"></i> [Terça a Sábado, das 9h às 20h]</p>
-                        <p><i class="fas fa-phone text-gold w-6"></i> [Seu Telefone/WhatsApp]</p>
+                        <p><i class="fas fa-map-marker-alt text-gold w-6"></i> Rua Riverton 49</p>
+                        <p><i class="fas fa-clock text-gold w-6"></i> Terça a Domingo, das 10h às 22h</p>
+                        <p><i class="fas fa-phone text-gold w-6"></i> 11 95544-3311</p>
                     </div>
                 </div>
                 <div class="h-96 w-full">
-                    <!-- Cole o código de incorporação do Google Maps aqui -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.175782017833!2d-46.65657158502213!3d-23.56193768468243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0x4a3ec424298e8a1e!2sAvenida%20Paulista!5e0!3m2!1spt-BR!2sbr!4v1678886564758!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map-dark"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.8066556108427!2d-46.77284862374635!3d-23.64716186523924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce53d324835251%3A0x6b497f1f1e03189e!2sR.%20Riverton%2C%2049%20-%20Jardim%20Ramala%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005851-120!5e0!3m2!1spt-BR!2sbr!4v1697831533035!5m2!1spt-BR!2sbr" class="w-full h-full border-0 map-dark" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="bg-black py-6">
         <div class="container mx-auto px-6 text-center text-stone-400 text-sm">
-            <p>&copy; 2024 Emerson Barbearia. Todos os direitos reservados.</p>
+            <p>© 2024 Emerson Barbearia. Todos os direitos reservados.</p>
             <p>Desenvolvido com a vibe Premium Urbano.</p>
         </div>
     </footer>
     
+    <div id="agendamento-modal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+        <div id="modal-content" class="bg-[#121212] p-6 md:p-8 border border-gold/50 w-full max-w-3xl relative rounded-lg">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gold text-3xl hover:text-white transition-colors z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2 class="text-3xl text-gold text-center mb-6">Agende seu Horário</h2>
+            
+            <div id="calendly-modal-widget-container"> 
+                 <div class="calendly-inline-widget" 
+                     data-url="https://calendly.com/jarprodrigues05/30min?hide_event_type_details=1&hide_landing_page_details=1&background_color=121212&text_color=e0e0e0&primary_color=d4af37&hide_gdpr_banner=1" 
+                     style="min-width:320px; height:100%;"> 
+                </div>
+                </div>
+        </div>
+    </div>
+    
     <script>
         // Script para animação de fade-in ao rolar
         const faders = document.querySelectorAll('.fade-in');
-
-        const appearOptions = {
-            threshold: 0.2, // O elemento aparece quando 20% dele está visível
-        };
-
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        const appearOptions = { threshold: 0.2 };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                } else {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    appearOnScroll.unobserve(entry.target);
+                    observer.unobserve(entry.target);
                 }
             });
         }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
 
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
+        // Script para Menu Mobile
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const menuIcon = menuBtn.querySelector('i');
+
+        const toggleMenu = () => {
+            mobileMenu.classList.toggle('hidden');
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
+            menuIcon.className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
+        };
+
+        menuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => {
+             // Se NÃO for o botão de agendar, fecha o menu
+              if (!link.id || link.id !== 'agendar-mobile-btn') {
+                  link.addEventListener('click', toggleMenu); 
+              }
         });
+        
+        // SCRIPT PARA MODAL DE AGENDAMENTO (CALENDLY) - CORRIGIDO v3
+        const agendamentoModal = document.getElementById('agendamento-modal');
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const agendarDesktopBtn = document.getElementById('agendar-desktop-btn');
+        const agendarMobileBtn = document.getElementById('agendar-mobile-btn');
+        const openServicoBtns = document.querySelectorAll('.open-modal-servico'); 
+        
+        const openModal = () => {
+             // Apenas mostra o modal. O script do Calendly no final do body cuidará do resto.
+             agendamentoModal.classList.remove('hidden');
+        };
+        
+        const closeModal = () => {
+            agendamentoModal.classList.add('hidden');
+        };
+
+        // Adiciona listeners aos botões
+        if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+        if (agendarDesktopBtn) agendarDesktopBtn.addEventListener('click', openModal);
+        if (agendarMobileBtn) {
+            agendarMobileBtn.addEventListener('click', () => {
+                 if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu(); // Fecha o menu mobile primeiro
+                }
+                openModal();
+            });
+        }
+        
+        openServicoBtns.forEach(btn => {
+            btn.addEventListener('click', openModal);
+        });
+
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+        // Fechar modal clicando fora do conteúdo
+        if (agendamentoModal) {
+            agendamentoModal.addEventListener('click', (e) => {
+                // Verifica se o clique foi no fundo (agendamentoModal) e não nos filhos dele
+                if (e.target === agendamentoModal) { 
+                    closeModal();
+                }
+            });
+        }
+        
     </script>
-</body>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</div> </body>
 </html>
-
-
-
